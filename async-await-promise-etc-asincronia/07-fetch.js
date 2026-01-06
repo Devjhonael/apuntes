@@ -1,10 +1,11 @@
 //cogemos la api para poder consumirlo
-const url = "https://reqres.in/api/users";
+const url = "https://reqres.in/api/users?page=2"
 
 const tbody = document.getElementById("tbody");
 const alertaCargando = document.getElementById("alertaCargando");
 const miTabla = document.getElementById("miTabla");
 
+// esto es sin async y await 
 // fetch(url).then((response) => {
 //   response.json().then((final) => {
 //     console.log(final);
@@ -12,7 +13,12 @@ const miTabla = document.getElementById("miTabla");
 // });
 
 const getUsuarios = async () => {
-  let response = await fetch(url);
+  let response = await fetch(url,{
+    method:"GET",
+    headers:{
+      Authorization: "Bearer reqres_6eae7baee3e845bca54b738556bfb5e2"
+    }
+  });
   let myJson = await response.json();
   return myJson;
 };
