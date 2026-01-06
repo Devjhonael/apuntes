@@ -1,3 +1,5 @@
+//* este proyecto es para validar los formulario si esta no en la base de datos y con un mensajito si se puede o no hacerlo
+
 //^INFO: http://mialtoweb.es/eventos-ii-eventos-mas-importantes-en-javascript/
 // ESTE PROYECTO SE SIRVE CUANDO 
 let inputEmail = document.getElementById("inputEmail");
@@ -84,3 +86,107 @@ formulario.onsubmit = (e) => {
     console.log(objetoUsuario)
 }
 
+
+// *esto se encarga de traer todos los datos y de pasada traes lo subdatos si se encuentran dentro
+let selectPais = document.getElementById("selectPais");
+let selectProvincia = document.getElementById("selectProvincia");
+
+// xk usamos una function afuera xk necesitamos que carge automaticamente los paises para luego recien cargar las provincias
+const llenarPaises = () => {
+  let contenido = `<option value=0>--- Seleccione un pais ---</option>`;
+  paises.forEach(function (objPais) {
+    contenido += `<option value=${objPais.id}>${objPais.nombre}</option>`;
+  });
+  selectPais.innerHTML = contenido;
+};
+
+llenarPaises();
+
+const llenarDepartamento = function (idPais) {
+  let provincias = departamentos.filter((objDepartamento) => {
+    if (idPais == objDepartamento.paisId) {
+      return objDepartamento;
+    }
+  });
+  console.log(provincias);
+  if (provincias.length > 0) {
+    selectProvincia.removeAttribute("disabled");
+    let contenido = "";
+    provincias.forEach((objProvincia) => {
+      contenido += `<option value=${objProvincia.id}>${objProvincia.nombre}</option>`;
+    });
+    selectProvincia.innerHTML = contenido;
+  } else {
+    selectProvincia.innerText = "";
+    selectProvincia.setAttribute("disabled", "disabled");
+  }
+};
+
+/**
+ * elemento.onchange evento que se ejecuta cada vez que el valor de un elemento
+ * cambia (en el caso del select, cada vez que un nuevo option es seleccionado)
+ * @param {*} e
+ */
+selectPais.addEventListener("change", function () {
+  llenarDepartamento(selectPais.value);
+});
+
+// if (x>5) {
+//     console.log("x es mayor k 5");
+//   }else{
+//     console.log("x es menor que 5");
+//   }
+//   //OPERADOR TERNARIO solamente cuando hay una linea de codigo nada mas
+//   x>5? console.log("x es mayor que 5"):console.log("x es menor que 5")
+
+
+//* otra manera de obtener los datos aqui 
+const inputNombre=document.getElementById("inputNombre");
+const inputApellido=document.getElementById("inputApellido");
+const inputFecha=document.getElementById("inputFecha");
+const formula=document.getElementById("formula");
+
+const inputManana=document.getElementById("inputManana");
+const inputTarde=document.getElementById("inputTarde");
+const inputNoche=document.getElementById("inputNoche");
+
+
+// es un objeto que va ir al servidor
+let objFormulario={
+    nombre:"",
+    apellido:"",
+    fecha:"",
+    turno:"manana"
+}
+
+const actualizarObjFormulario=(e)=>{
+    //el target es el elemento que a ha cambiado cuando le presionamos una letra muestra que input es el que has presionado
+    //el target permite sabes en k input a sucedido el evento 
+    console.log(e.target.value)
+
+    //para poder actualizar un objeto antes ya debe estar inicializado
+    objFormulario[e.target.name]=e.target.value
+    console.log(objFormulario)
+    
+}
+
+//solamente lo referenciamos xk hay una diferencia cuando se compile el archivo js y empieza de arriba abajo si tiene esto () altoke lo va ejecutar automaticamente pero cuando no le colocamos el () entonces only referenciamos indicando que cuando recien se haga onkeyup recien debe ejecutarse la funcion actualizarObjFormulario
+
+inputNombre.onkeyup=actualizarObjFormulario
+inputApellido.onkeyup=actualizarObjFormulario
+inputFecha.onchange=actualizarObjFormulario
+
+const changeRadio=(e)=>{
+    objFormulario[e.target.name]=e.target.value
+
+}
+
+inputManana.onchange=changeRadio
+inputTarde.onchange=changeRadio
+inputNoche.onchange=changeRadio
+
+formula.onsubmit=function(e){
+    e.preventDefault()
+    console.log('Enviando datos al servidorsh')
+    console.log(objFormulario)
+}

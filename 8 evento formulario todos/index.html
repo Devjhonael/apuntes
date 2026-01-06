@@ -7,6 +7,39 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
     <script src="./data-usuarios.js"></script>
+    <script src="./data-lugares.js"></script>
+        <style>
+        body{
+            box-sizing: border-box;
+        }
+        form{
+            height: 300px;
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            box-shadow: 0px 0px 10px #aaa;
+            border-radius: 10px;
+        }
+        form input{
+            width: 100%;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        form button{
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: rgb(65, 226, 65);
+            color: white;
+            border-radius: 15px;
+            border: none;
+            cursor:pointer;
+            transition: all 0.2s ease-out;
+        }
+        button:hover{
+            transform:scale(1.1);
+        }
+    </style>
   </head>
   <body>
     <form class="formulario" id="formulario">
@@ -21,6 +54,48 @@
       </p>
       <button>Iniciar Session</button>
       <a href="">Olvidaste tu contrasenia?</a>
+    </form>
+
+    <!-- aqui vamos a hacer otro proyecto para traer pais y departamento -->
+    <div class="container">
+      <h3>Mostrando pais y departamento</h3>
+      <p>
+        <label for="">Pais:</label>
+        <select id="selectPais"></select>
+      </p>
+      <p>
+        <label for="">Provincia:</label>
+        <select id="selectProvincia" disabled></select>
+      </p>
+    </div>
+    <h1>Mi Formulario - otra manera de capturar los formulario con el atributo name</h1>
+    <!-- el name es un atributo exclusivo de los formulario -->
+    <form id="formula">
+      <p>
+        <label for="">Nombres</label>
+        <input type="text" name="nombre" id="inputNombre" />
+      </p>
+
+      <p>
+        <label for="">Apellidos</label>
+        <input type="text" name="apellido" id="inputApellido" />
+      </p>
+
+      <p>
+        <label for="">Fecha de Nacimiento</label>
+        <input type="date" name="fecha" id="inputFecha" />
+      </p>
+      <p>
+          <label for="">Manana</label>
+          <input type="radio" name="turno" id="inputManana" checked value="manana">
+
+          <label for="">tarde</label>
+          <input type="radio" name="turno" id="inputTarde" value="tarde">
+          
+          <label for="">noche</label>
+          <input type="radio" name="turno" id="inputNoche" value="noche">
+      </p>
+      <button type="submit">Enviar</button>
     </form>
     <script src="./app.js"></script>
   </body>
