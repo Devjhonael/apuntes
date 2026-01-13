@@ -179,9 +179,109 @@ console.log(`cantidad de palabras: ${mensaje.length}`)
 console.log(`elimina espacios: ${mensaje.trim()}`)
 console.log(`validar extensiones prefijo: ${mensaje.endsWith()}`)
 
+//% METODOS DE LOS ARREGLOS
+//% arreglo.forEach(()=>{}) muestra lo que esta dentro
+//% /**
+//%  * El callback se ejecuta tantas veces como elementos
+//%  * tenga el arreglo, el callback recibe hasta 3 elementos
+//%  * (elemento_actual, iteracion?, copia_del_arreglo?)=>{}
+//%  */
+//% ? significa que ese parámetro es opcional
+
+peliculas.forEach((elemento) => {
+  console.log(elemento);
+});
+
+let arreglo = ["Jorge", "Luis", "Karla", "Jane"];
+arreglo.forEach((nombre) => {
+  console.log(nombre);
+    // en cada vuelta pueden dibujar un producto
+  // en forma de card en el DOM para un E-COMMERCE creando una variable contenido
+});
+
+// ------ recorriendo peliculas
+peliculas.forEach((objPelicula, i) => {
+  console.log(`${i} : ${objPelicula.title}`);
+  // Desventaja: No se pueden retornars elementoses
+  // de la función forEach
+});
+
+// filter
+// /**
+//  * Funcion de los arreglos que recibe un callback en el cual
+//  * se pueden RETORNAR un arreglo de elementos de acuerdo a ciertas condiciones
+//  * Sirve como un filtro de elementos
+//  * Ejecuta el callback tantas veces como elementos tenga
+//  * (elemento_actual, iteracion?, copia_del_arreglo?)=>{}
+//  */
+let numeros = [20, 1, 7, 82, 6, 9, 32, 10, 0, 45];
+
+let mayoresIgualesQueDiez = numeros.filter((elemento, i, arreglo) => {
+  if (elemento >= 10) {
+    return elemento;
+  }
+});
+console.log(mayoresIgualesQueDiez);
+
+let peliculasExtranjeras = peliculas.filter((objPelicula) => {
+  if (objPelicula.original_language !== "en") {
+    return objPelicula;
+  }
+});
+console.log(peliculasExtranjeras);
 
 
+//_ PROPIEDADES DE LOS ARREGLOS 2
+// /**
+//  * Devuelve un arreglo de la misma cantidad de elementos del arreglo }
+//  * original con las transformaciones que el usuario le haga a cada elemento
+//  * A diferencia del filter, la función map no puede retornar menos elementos
+//  */
+let nombres = ["Joaquin", "Maria", "Thamara", "Allison", "Jorge"];
+let nombresMayusculas = nombres.map((name) => {
+  return {
+    original: name,
+    minuscula: name.toLowerCase(),
+    mayuscula: name.toUpperCase(),
+  };
+});
+console.log(nombresMayusculas);
 
+// array.splice(posicion_inicia, elementos_a_eliminar, elementos_a_insertar)
+console.log("///////////SPLICE//////////");
+let productos = [
+  "TV Samsung",
+  "Tablet Android",
+  "Laptop Razer",
+  "Smartphone Xiaomi",
+];
+// A partir de la posición 1, eliminar 1 elemento
+// productos.splice(1, 1);
+// console.log(productos);
+// A partir de la posición 0, eliminar 1 elemento e insertar el elemento "PC gamer"
+// productos.splice(0, 1, "PC gamer");
+// console.log(productos);
+// A partir de la posición 2, no eliminar elementos e insertar 2 nuevos elementos
+// productos.splice(2, 0, "Mouse HyperX", "Audífonos Razer");
+// console.log(productos);
+
+// --------- indexOf -------
+// console.log("/////indexOf////");
+// let posicionMouse = productos.indexOf("Mouse HyperX");
+// console.log("Posición del mouse:");
+// console.log(posicionMouse);
+
+// -------- pop -----------
+// Sirve para extraer el último de un arreglo
+// la función además, retorna dicho elemento
+// console.log("//////////////pop////////////");
+// let elementoEliminado = productos.pop();
+// console.log(`Eliminaste: ${elementoEliminado}`);
+// console.log(productos);
+
+// & PROPIEDADES DE FECHAS
+
+// - PROPIEDADES DE MATH
 
 //PARA CREAR NUESTROS PROPIOS SNIPPETS
 //preferences/configure snippets/selecciona_lenguaje/GO
@@ -195,3 +295,128 @@ console.log(`validar extensiones prefijo: ${mensaje.endsWith()}`)
 	// 	],
 	// 	"description": "descripcion_de_esto"
 	// }
+
+  // +CLASES
+  // // 1 modelo de necegocio es narrar todo lo que quieres que haga tu aplicacion
+// // 2 obtener requerimientos
+
+// /**
+//  * Los nombres de las clases deben iniciar con una Mayúscula
+//  */
+// class Restaurant {
+//   aforo;
+//   nroMesas;
+//   direccion;
+//   categoria;
+//   telefonos;
+//   nombre;
+//   delivery;
+//   /**
+//    * Para la 'tipificacion':
+//    * Será tipo "A" si el aforo es mayor a 500 personas
+//    * Será tipo "B" si es aforo es mayor a 300 personas
+//    * Será tipo "C" si el aforo es menor igual a 300 personas
+//    */
+//   tipificacion;
+
+//   /**
+//    * Funcion que se ejecuta automaticamente al momento de crear un objeto
+//    * da valores iniciales a un objeto
+//    */
+//   constructor(
+//     _aforo = 0,
+//     _nroMesas = 0,
+//     _direccion = "Sin Dirección",
+//     _categoria = "Sin Categoria",
+//     _telefonos = [],
+//     _nombre = "Sin Nombre",
+//     _delivery = false
+//   ) {
+//     // this : acceder al scope interno de la clase.
+//     // this: se usa para acceder a los atributos y métodos de la clase.
+//     this.aforo = _aforo;
+//     this.nroMesas = _nroMesas;
+//     this.direccion = _direccion;
+//     this.categoria = _categoria;
+//     this.telefonos = _telefonos;
+//     this.nombre = _nombre;
+//     this.delivery = _delivery;
+
+//     //podemos hacer evaluaciones o comparaciones 
+//     if (this.aforo > 500) {
+//       this.tipificacion = "A";
+//     } else if (this.aforo > 300) {
+//       this.tipificacion = "B";
+//     } else {
+//       this.tipificacion = "C";
+//     }
+//   }
+//   //asi se crean los metodos dentro de una clase
+//   imprimirTelefonos() {
+//     console.log(`Teléfonos del restaurant: ${this.nombre}`);
+//     for (let i = 0; i < this.telefonos.length; i++) {
+//       console.log(`📞 ${this.telefonos[i]}`);
+//     }
+//   }
+
+//   imprimirTelefonos2() {
+//     for (const tel of this.telefonos) {
+//       console.log(`Telefono: ${tel}`);
+//     }
+//   }
+
+//   toString() {
+//     return this.nombre;
+//   }
+
+// }
+
+// // Instanciando una clase : Creando un objeto a partir de una clase
+// let objTanta = new Restaurant(
+//   800,
+//   200,
+//   "Vallecito",
+//   "Comida Criolla",
+//   ["974204853", "974854512"],
+//   "Tanta",
+//   true
+// );
+
+// let objAstrid = new Restaurant();
+
+// // Modificando los atributos de un objeto
+// // objAstrid.aforo = 1000;
+
+// console.log(objTanta);
+// console.log(objAstrid);
+
+// objTanta.imprimirTelefonos();
+// objTanta.imprimirTelefonos2();
+
+
+// //OBJETO WINDOW
+// // window => objeto que representa al navegador
+// // y todas sus propiedades internas
+// // es un objeto global
+
+// // Obtener la altura y el ancho del viewport de la pantalla si lo achico otra medida tendra y asi.
+// let alto = window.innerHeight;
+// let ancho = window.innerWidth;
+
+// console.log(`Alto: ${alto}`);
+// console.log(`Ancho: ${ancho}`);
+
+// // window.location contiene un obj con información
+// // de la dirección que se está visitando a través del navegador
+// // el puerto, href, dominio,hash, etc
+// let navegacion = window.location;
+// console.log(navegacion);
+
+// let url = navegacion.href;
+// console.log(url);
+
+// console.log(navegacion);
+
+// // window.document => objeto que tiene toda la información
+// // DEL DOM!!!!!!!!!!!!! todas sus etiquetas etc la estructura completa
+// console.log(window.document);
