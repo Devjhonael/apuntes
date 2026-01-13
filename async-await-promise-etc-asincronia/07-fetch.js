@@ -1,17 +1,23 @@
 //cogemos la api para poder consumirlo
-const url = "https://reqres.in/api/users?page=2"
+const url = "https://reqres.in/api/users?page=1"
 
 const tbody = document.getElementById("tbody");
 const alertaCargando = document.getElementById("alertaCargando");
 const miTabla = document.getElementById("miTabla");
 
 // esto es sin async y await 
-// fetch(url).then((response) => {
+// fetch(url,{
+//     method:"GET",
+//     headers:{
+//       Authorization: "Bearer reqres_6eae7baee3e845bca54b738556bfb5e2"
+//     }
+//   }).then((response) => {
 //   response.json().then((final) => {
 //     console.log(final);
 //   });
-// });
+// });n
 
+// para no usaar la doble promesa usamos el async await
 const getUsuarios = async () => {
   let response = await fetch(url,{
     method:"GET",
@@ -20,6 +26,7 @@ const getUsuarios = async () => {
     }
   });
   let myJson = await response.json();
+  console.log(myJson)
   return myJson;
 };
 

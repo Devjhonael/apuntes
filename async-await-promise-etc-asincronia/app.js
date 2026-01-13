@@ -247,6 +247,13 @@ miPromesa
  * async await
  */
 
+//* la promesa siempre me consume recuerda que dentro de una promesa debe ir un proceso asincrono
+// * la mayoria de las promesas son de consumo antes que de consumo  
+// * 
+// * 
+
+miPromesa.then(()=>{}).catch(()=>{})
+
  let paises = [
 		{ id: 1, nombre: "Perú" },
 		{ id: 2, nombre: "Bolivia" },
