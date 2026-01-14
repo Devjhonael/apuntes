@@ -88,8 +88,8 @@ function imprimirPares(numeros) {
   }
 }
 //# invocando a la función 4
-let arreglo = [4, 20, 1, 0, 5, 63, 98];
-imprimirPares(arreglo);
+let arreglos = [4, 20, 1, 0, 5, 63, 98];
+imprimirPares(arreglos);
 
 //#PARAMETROS POR DEFECTO DE UNA FUNCION 
 /**
@@ -237,7 +237,7 @@ console.log(peliculasExtranjeras);
 //  * original con las transformaciones que el usuario le haga a cada elemento
 //  * A diferencia del filter, la función map no puede retornar menos elementos
 //  */
-let nombres = ["Joaquin", "Maria", "Thamara", "Allison", "Jorge"];
+let nombre = ["Joaquin", "Maria", "Thamara", "Allison", "Jorge"];
 let nombresMayusculas = nombres.map((name) => {
   return {
     original: name,
