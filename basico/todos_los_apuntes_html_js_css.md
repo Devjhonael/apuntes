@@ -230,29 +230,7 @@ a:hover = solo si el usuario pasa el cursos sobre el elemento, normalmente en un
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* JS BASICO
-
-
-
-
+* JS INTERMEDIO
 
 
 

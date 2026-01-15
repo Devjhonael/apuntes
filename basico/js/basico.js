@@ -118,9 +118,6 @@ function buscarNombre(nombres = [], busqueda = "") {
 // console.log(resultadoBusqueda);
 
 
-
-
-
 //# FUNCIONES ANONIMAS (las funciones anonimas son funciones cuyo valor se guarda en una variable.)
 
 //#las funciones siempre se crean con CONST xk no se modifica buena practica
@@ -179,7 +176,7 @@ console.log(`cantidad de palabras: ${mensaje.length}`)
 console.log(`elimina espacios: ${mensaje.trim()}`)
 console.log(`validar extensiones prefijo: ${mensaje.endsWith()}`)
 
-//% METODOS DE LOS ARREGLOS
+//% METODOS UTILIZADOS DE LISTA DE ARREGLOS
 //% arreglo.forEach(()=>{}) muestra lo que esta dentro
 //% /**
 //%  * El callback se ejecuta tantas veces como elementos
@@ -188,10 +185,7 @@ console.log(`validar extensiones prefijo: ${mensaje.endsWith()}`)
 //%  */
 //% ? significa que ese parámetro es opcional
 
-peliculas.forEach((elemento) => {
-  console.log(elemento);
-});
-
+// % FOREACH
 let arreglo = ["Jorge", "Luis", "Karla", "Jane"];
 arreglo.forEach((nombre) => {
   console.log(nombre);
@@ -199,14 +193,8 @@ arreglo.forEach((nombre) => {
   // en forma de card en el DOM para un E-COMMERCE creando una variable contenido
 });
 
-// ------ recorriendo peliculas
-peliculas.forEach((objPelicula, i) => {
-  console.log(`${i} : ${objPelicula.title}`);
-  // Desventaja: No se pueden retornars elementoses
-  // de la función forEach
-});
 
-// filter
+//% FILTER
 // /**
 //  * Funcion de los arreglos que recibe un callback en el cual
 //  * se pueden RETORNAR un arreglo de elementos de acuerdo a ciertas condiciones
@@ -223,15 +211,7 @@ let mayoresIgualesQueDiez = numeros.filter((elemento, i, arreglo) => {
 });
 console.log(mayoresIgualesQueDiez);
 
-let peliculasExtranjeras = peliculas.filter((objPelicula) => {
-  if (objPelicula.original_language !== "en") {
-    return objPelicula;
-  }
-});
-console.log(peliculasExtranjeras);
-
-
-//_ PROPIEDADES DE LOS ARREGLOS 2
+//% MAP
 // /**
 //  * Devuelve un arreglo de la misma cantidad de elementos del arreglo }
 //  * original con las transformaciones que el usuario le haga a cada elemento
@@ -247,8 +227,41 @@ let nombresMayusculas = nombres.map((name) => {
 });
 console.log(nombresMayusculas);
 
+//% FIND
+/**nos retorna la 1ra coincidencia que se relacione con la busqueda */
+let nombresito = [
+  { nombre: "Jose", apellido: "Martinez" },
+  { nombre: "Mia", apellido: "Lune" },
+  { nombre: "Kiwi", apellido: "DeMontaña" },
+  { nombre: "Mia", apellido: "Lune" },
+];
+
+let busqueda = nombresito.find((buscar) => buscar.nombre === "Mia");
+let busqueda2 = nombresito.find((buscar) => buscar.nombre === "Kiwi");
+let busqueda3 = nombresito.find((buscar) => buscar.nombre === "Miaurwick");
+
+console.log(busqueda);
+console.log(busqueda2);
+console.log(busqueda3);
+
+
+//% Some
+//**
+// Sirve para buscar elementos de un array por medio de la comparación por parametro y retorna true o false, se usa para verificar que el elemento existe.
+//  */
+let nombress = [ 
+		{nombre: "Jose", apellido: "Martinez"},
+		{nombre: "Mia", apellido: "Lune"},
+		{nombre: "Kiwi", apellido: "DeMontaña"},
+		{nombre: "Mia", apellido: "Lune"},
+];
+
+let busquedaa = nombress.some((buscar) => buscar.nombre === "Mia");
+console.log(busquedaa); // Retornara Treu ya que si existe //
+
+
 // array.splice(posicion_inicia, elementos_a_eliminar, elementos_a_insertar)
-console.log("///////////SPLICE//////////");
+console.log("--SPLICE--");
 let productos = [
   "TV Samsung",
   "Tablet Android",
@@ -266,39 +279,21 @@ let productos = [
 // console.log(productos);
 
 // --------- indexOf -------
-// console.log("/////indexOf////");
-// let posicionMouse = productos.indexOf("Mouse HyperX");
-// console.log("Posición del mouse:");
-// console.log(posicionMouse);
-
-// -------- pop -----------
-// Sirve para extraer el último de un arreglo
-// la función además, retorna dicho elemento
-// console.log("//////////////pop////////////");
-// let elementoEliminado = productos.pop();
-// console.log(`Eliminaste: ${elementoEliminado}`);
-// console.log(productos);
+console.log("--indexOf --");
+let posicionMouse = productos.indexOf("Mouse HyperX");
+console.log("Posición del mouse:");
+console.log(posicionMouse);
 
 // & PROPIEDADES DE FECHAS
+// & FALTA  COMPLETAR
 
 // - PROPIEDADES DE MATH
+//- FALTA COMPLETAR
 
-//PARA CREAR NUESTROS PROPIOS SNIPPETS
-//preferences/configure snippets/selecciona_lenguaje/GO
-//el $1 permite dar tab y saltar de 1 a 1
-
-	// "nombre_snippets": {
-	// 	"prefix": "palabra_asignada_enter",
-	// 	"body": [
-	// 		"const $0mifuncion=($1)=>{$2}",
-	// 		"$2"
-	// 	],
-	// 	"description": "descripcion_de_esto"
-	// }
 
   // +CLASES
-  // // 1 modelo de necegocio es narrar todo lo que quieres que haga tu aplicacion
-// // 2 obtener requerimientos
+  // 1 modelo de necegocio es narrar todo lo que quieres que haga tu aplicacion
+// 2 obtener requerimientos
 
 // /**
 //  * Los nombres de las clases deben iniciar con una Mayúscula
@@ -371,7 +366,7 @@ let productos = [
 
 // }
 
-// // Instanciando una clase : Creando un objeto a partir de una clase
+// Instanciando una clase : Creando un objeto a partir de una clase
 // let objTanta = new Restaurant(
 //   800,
 //   200,
@@ -384,8 +379,8 @@ let productos = [
 
 // let objAstrid = new Restaurant();
 
-// // Modificando los atributos de un objeto
-// // objAstrid.aforo = 1000;
+// Modificando los atributos de un objeto
+// objAstrid.aforo = 1000;
 
 // console.log(objTanta);
 // console.log(objAstrid);
@@ -393,30 +388,15 @@ let productos = [
 // objTanta.imprimirTelefonos();
 // objTanta.imprimirTelefonos2();
 
+// PARA CREAR NUESTROS PROPIOS SNIPPETS
+// preferences/configure snippets/selecciona_lenguaje/GO
+// el $1 permite dar tab y saltar de 1 a 1
 
-// //OBJETO WINDOW
-// // window => objeto que representa al navegador
-// // y todas sus propiedades internas
-// // es un objeto global
-
-// // Obtener la altura y el ancho del viewport de la pantalla si lo achico otra medida tendra y asi.
-// let alto = window.innerHeight;
-// let ancho = window.innerWidth;
-
-// console.log(`Alto: ${alto}`);
-// console.log(`Ancho: ${ancho}`);
-
-// // window.location contiene un obj con información
-// // de la dirección que se está visitando a través del navegador
-// // el puerto, href, dominio,hash, etc
-// let navegacion = window.location;
-// console.log(navegacion);
-
-// let url = navegacion.href;
-// console.log(url);
-
-// console.log(navegacion);
-
-// // window.document => objeto que tiene toda la información
-// // DEL DOM!!!!!!!!!!!!! todas sus etiquetas etc la estructura completa
-// console.log(window.document);
+// 	"nombre_snippets": {
+// 		"prefix": "palabra_asignada_enter",
+// 		"body": [
+// 			"const $0mifuncion=($1)=>{$2}",
+// 			"$2"
+// 		],
+// 		"description": "descripcion_de_esto"
+// 	}
