@@ -1,0 +1,14 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+body{
+    background: #a1d1ce;
+}
+
+.cuadrado{
+    border: 1px solid red;
+    height: 240px;
+    width: 240px;
+}
