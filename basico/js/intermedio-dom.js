@@ -1,7 +1,6 @@
-
 // *siempre es mas facil crearlo todo las ventanas y todo y solo usarlo los bontones para ocultarlo y abrirlo por que es mas facil y sencillo
 
-console.log("************************************")
+console.log("************************************");
 // console.log("DOOM!!!!")
 // // /+ OBJETO WINDOW
 // // window => objeto que representa al navegador y todas sus propiedades internas es un objeto global
@@ -27,7 +26,6 @@ console.log("************************************")
 // // window.document => objeto que tiene toda la información
 // // DEL DOM!!!!!!!!!!!!! todas sus etiquetas etc la estructura completa
 // // console.log(window.document);
-
 
 // // $creamos un elemento  en html y para poder cogerlo y hacer maravilla debemos capturarlo con el id que debe tener de atributo
 // // $ejemplo
@@ -73,7 +71,7 @@ console.log("************************************")
 // //^ colocar el contenido al elemento
 // p.innerHTML="Soy el nuevo elemento creado"
 
-// //^debo decirle en donde se va colgar el hijo de quien va ser 
+// //^debo decirle en donde se va colgar el hijo de quien va ser
 // header.appendChild(p)
 
 // //^ eventos
@@ -94,20 +92,82 @@ console.log("************************************")
 // & DESTRUCTURACION EN ARRAY
 const colores = ["rojo", "verde", "azul"];
 const [a, b, c] = colores;
-console.log(a)
-console.log(b)
-console.log(c)
+console.log(a);
+console.log(b);
+console.log(c);
 const [primero, , tercero] = colores;
-console.log(primero)
-console.log(tercero)
+console.log(primero);
+console.log(tercero);
 
 // & DESTRUCTURACION OBJETOS
-const persona = { nombre: "Ana", edad: 30 };
-const { nombre, edad } = persona;
+const persona = { nombree: "Ana", edad: 30 };
+const { nombree, edad } = persona;
 
 // & OPERADOR REST
+//hacer una copia de un arreglo y almacenarlo aparte
+// con el = estamos hacemo copia hasta de la direccion de memoria y datos mala practica
+let nombres = ["Anita", "Lucio", "María", "Omar", "Fernanda"];
+let [...nombresTemporal] = nombres;
+console.log(nombresTemporal);
 
+let [ele1, ele2, ...resto] = nombres;
+console.log(ele1);
+console.log(ele2);
+console.log(resto);
+// console.log(...resto);
 
+let nombresCopia = ["Juan", ...nombres];
+console.log(nombresCopia);
+console.log(nombres);
 
+//& estoy pasando un array y solo quiero destructurar 2 valores de ese arreglo
+const dosPrimeros = ([a, b]) => {
+  console.log(a);
+  console.log(b);
+};
 
-console.log("************************************")
+dosPrimeros(nombres);
+
+let restaurant = {
+  nombre: "El pollo real",
+  tipo: "Pollería",
+  aforo: 500,
+  geo: {
+    lat: -70,
+    lng: -16,
+  },
+};
+
+// Creando una variable "nombre" que es copia de restaurant.nombre
+// tambien podemos cambiar el nombre de aforo a capacidad
+
+let { nombre, aforo: capacidad } = restaurant;
+console.log(nombre);
+console.log(capacidad);
+
+let {
+  geo: { lat: latitud, lng: longitud },
+} = restaurant;
+console.log(geo);//error
+console.log(latitud, longitud);
+
+const nombreYAforo = ({ nombre, aforo }) => {
+  console.log(nombre, aforo);
+};
+nombreYAforo(restaurant);
+
+// forma correcta de copiar un objeto por completo
+let copiaRest = { ...restaurant };
+console.log(copiaRest);
+
+const modificarAforo = (objRestaurant, nuevoAforo) => {
+  return {
+    ...objRestaurant,
+    aforo: nuevoAforo,
+  };
+};
+
+let restaurantGrande = modificarAforo(restaurant, 5000);
+console.log(restaurantGrande);
+
+console.log("************************************");
